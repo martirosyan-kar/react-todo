@@ -1,15 +1,15 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
 
-import { updateTodo, removeTodo, nonEditableTodo } from '../actions/index';
-import ToDoForm from './ToDoForm';
+import { updateTodo, removeTodo, nonEditableTodo } from "../actions/index";
+import ToDoForm from "./ToDoForm";
 
 class EditToDoForm extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  onSubmit = (todo) => {
+  onSubmit = todo => {
     const text = todo.text;
     const id = this.props.todo.id;
     this.props.dispatch(updateTodo(id, { text }));
@@ -28,12 +28,15 @@ class EditToDoForm extends React.Component {
   render() {
     return (
       <div>
-        <ToDoForm onSubmit={this.onSubmit} onCancel={this.onCancel} todo={this.props.todo} />
+        <ToDoForm
+          onSubmit={this.onSubmit}
+          onCancel={this.onCancel}
+          todo={this.props.todo}
+        />
         <button onClick={this.onRemove}>Remove</button>
       </div>
     );
   }
 }
-
 
 export default connect()(EditToDoForm);

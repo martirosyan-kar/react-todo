@@ -1,6 +1,6 @@
 export default (state = [], action) => {
   switch (action.type) {
-    case 'INSERT_TODO':
+    case "INSERT_TODO":
       return [
         ...state,
         {
@@ -9,10 +9,10 @@ export default (state = [], action) => {
           editable: false
         }
       ];
-    case 'REMOVE_TODO':
+    case "REMOVE_TODO":
       return state.filter(({ id }) => id !== action.id);
-    case 'UPDATE_TODO':
-      return state.map((todo) => {
+    case "UPDATE_TODO":
+      return state.map(todo => {
         if (todo.id === action.id) {
           return {
             ...todo,
@@ -23,15 +23,14 @@ export default (state = [], action) => {
 
         return todo;
       });
-    case 'EDIT_TODO':
-      return state.map((todo) => {
+    case "EDIT_TODO":
+      return state.map(todo => {
         if (todo.id === action.id) {
           return {
             ...todo,
             editable: true
           };
-        }
-        else {
+        } else {
           return {
             ...todo,
             editable: false
@@ -39,8 +38,8 @@ export default (state = [], action) => {
         }
       });
 
-    case 'COMPLETED_TODO':
-      return state.map((todo) => {
+    case "COMPLETED_TODO":
+      return state.map(todo => {
         if (todo.id === action.id) {
           return {
             ...todo,
@@ -50,9 +49,8 @@ export default (state = [], action) => {
         return todo;
       });
 
-
-    case 'NON_EDITABLE_TODO':
-      return state.map((todo) => {
+    case "NON_EDITABLE_TODO":
+      return state.map(todo => {
         if (todo.id === action.id) {
           return {
             ...todo,
@@ -62,8 +60,8 @@ export default (state = [], action) => {
         return todo;
       });
 
-    case 'NON_EDITABLE':
-      return state.map((todo) => {
+    case "NON_EDITABLE":
+      return state.map(todo => {
         return {
           ...todo,
           editable: false

@@ -1,21 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
 
-import 'normalize.css/normalize.css';
+import "normalize.css/normalize.css";
 
-import AppRouter from './routers/AppRouter';
-import configureStore from './store/configureStore';
+import AppRouter from "./routers/AppRouter";
+import configureStore from "./store/configureStore";
 
-import { addToDo } from './actions/index';
+import { addToDo } from "./actions/index";
 
-import './styles/styles.scss';
+import "./styles/styles.scss";
 
 const store = configureStore();
 
-store.dispatch(addToDo({ text: 'Text' }));
+store.dispatch(addToDo({ text: "Text" }));
 
-console.log(store.subscribe(()=>{console.log(store.getState())}));
+console.log(
+  store.subscribe(() => {
+    console.log(store.getState());
+  })
+);
 
 const jsx = (
   <Provider store={store}>
@@ -23,9 +27,4 @@ const jsx = (
   </Provider>
 );
 
-ReactDOM.render(jsx, document.getElementById('app'));
-
-
-
-
-
+ReactDOM.render(jsx, document.getElementById("app"));
